@@ -89,26 +89,26 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    // @ReactProp(name="atmospheric")
-    // public void setAtmospheric(ReactWheelCurvedPicker picker, boolean hasAtmospheric) {
-    //     if (picker != null) {
-    //         picker.setAtmospheric(hasAtmospheric);
-    //     }
-    // }
+    @ReactProp(name="atmospheric")
+    public void setAtmospheric(ReactWheelCurvedPicker picker, boolean hasAtmospheric) {
+        if (picker != null) {
+            picker.setAtmospheric(hasAtmospheric);
+        }
+    }
 
-    // @ReactProp(name="curved")
-    // public void setCurved(ReactWheelCurvedPicker picker, boolean hasCurved) {
-    //     if (picker != null) {
-    //         picker.setCurved(hasCurved);
-    //     }
-    // }
+    @ReactProp(name="curved")
+    public void setCurved(ReactWheelCurvedPicker picker, boolean hasCurved) {
+        if (picker != null) {
+            picker.setCurved(hasCurved);
+        }
+    }
 
-    // @ReactProp(name="visibleItemCount")
-    // public void setVisibleItemCount(ReactWheelCurvedPicker picker, int num) {
-    //     if (picker != null) {
-    //         picker.setVisibleItemCount(num);
-    //     }
-    // }
+    @ReactProp(name="visibleItemCount")
+    public void setVisibleItemCount(ReactWheelCurvedPicker picker, int num) {
+        if (picker != null) {
+            picker.setVisibleItemCount(num);
+        }
+    }
 
     // // Didnot work on android 11
     // @ReactProp(name="itemSpace")
