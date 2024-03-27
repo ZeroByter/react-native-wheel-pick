@@ -46,11 +46,11 @@ export default class Picker extends Component {
   };
 
   validateDeprecateProps = (oldProp = 'curtain', newProp = '') => {
-    if(this.props){
-      if(typeof this.props[oldProp] !== 'undefined'){
+    if (this.props) {
+      if (typeof this.props[oldProp] !== 'undefined') {
         this.props[oldProp] = undefined;
 
-        if(newProp === ''){
+        if (newProp === '') {
           console.warn(`react-native-wheel-pick : "${oldProp}" Prop was deprecated. Please remove it for improve native performance.`)
         } else {
           console.warn(`react-native-wheel-pick : "${oldProp}" Prop was deprecated. Please use "${newProp}" instead.`)
@@ -62,12 +62,8 @@ export default class Picker extends Component {
   render() {
     const { pickerData, style, ...props } = this.props;
 
-    if(Platform.OS === 'android'){
+    if (Platform.OS === 'android') {
       //checkDeprecatedProp
-      this.validateDeprecateProps('atmospheric');
-      this.validateDeprecateProps('curved');
-      this.validateDeprecateProps('visibleItemCount');
-      this.validateDeprecateProps('itemSpace');
       this.validateDeprecateProps('curtain', 'isShowSelectBackground');
       this.validateDeprecateProps('curtainColor', 'selectBackgroundColor');
 

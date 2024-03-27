@@ -110,13 +110,12 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    // // Didnot work on android 11
-    // @ReactProp(name="itemSpace")
-    // public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
-    //     if (picker != null) {
-    //         picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
-    //     }
-    // }
+    @ReactProp(name="itemSpace")
+    public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
+        if (picker != null) {
+            picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
+        }
+    }
 
     @ReactProp(name="textColor", customType = "Color")
     public void setTextColor(ReactWheelCurvedPicker picker, Integer color) {
