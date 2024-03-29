@@ -41,8 +41,8 @@ class WheelCurvedPicker extends PureComponent {
   }
 
   onValueChange = ({ nativeEvent: { data } }) => {
-    this.props.onValueChange(data); 
-    if(firstTimeOnChange) {
+    this.props.onValueChange(data);
+    if (firstTimeOnChange) {
       return firstTimeOnChange = false
     }
   }

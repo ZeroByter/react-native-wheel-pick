@@ -27,11 +27,12 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     private static final int DEFAULT_TEXT_SIZE = 24 * 2;
     private static final int DEFAULT_ITEM_SPACE = 16 * 2;
 
+    private Boolean enableAnimations = true;
+
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-                ItemSelectedEvent.EVENT_NAME, MapBuilder.of("registrationName", "onValueChange")
-        );
+                ItemSelectedEvent.EVENT_NAME, MapBuilder.of("registrationName", "onValueChange"));
     }
 
     @Override
@@ -53,17 +54,19 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         picker.setItemAlign(0);
 
         // Trick Code - wake setSelectItemPosition
-        picker.setSelectedItemPosition(1); // Cannot 0 instead of 1, I Don Know why but need this line for make ReactProp selectIndex Work
+        picker.setSelectedItemPosition(1); // Cannot 0 instead of 1, I don't know why
+                                           // but need this line for make
+                                           // ReactProp selectIndex Work
 
         return picker;
     }
 
-    @ReactProp(name="data")
+    @ReactProp(name = "data")
     public void setData(ReactWheelCurvedPicker picker, ReadableArray items) {
         if (picker != null) {
             ArrayList<Object> valueData = new ArrayList<>();
             ArrayList<String> labelData = new ArrayList<>();
-            for (int i = 0; i < items.size(); i ++) {
+            for (int i = 0; i < items.size(); i++) {
                 ReadableMap itemMap = items.getMap(i);
 
                 if (itemMap.getType("value") == ReadableType.String) {
@@ -79,75 +82,82 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="selectedIndex")
+    @ReactProp(name = "enableAnimations")
+    public void setSelectedIndex(ReactWheelCurvedPicker picker, boolean enableAnimations) {
+        if (picker != null) {
+            this.enableAnimations = enableAnimations;
+        }
+    }
+
+    @ReactProp(name = "selectedIndex")
     public void setSelectedIndex(ReactWheelCurvedPicker picker, int index) {
-        //if (picker != null && picker.getState() == WheelPicker.SCROLL_STATE_IDLE) {
+        // if (picker != null && picker.getState() == WheelPicker.SCROLL_STATE_IDLE) {
         // Log.d("Index from React", index + "");
         if (picker != null) {
-            picker.setSelectedItemPosition(index);
+            picker.setSelectedItemPosition(index, this.enableAnimations);
             picker.invalidate();
         }
     }
 
-    @ReactProp(name="atmospheric")
+    @ReactProp(name = "atmospheric")
     public void setAtmospheric(ReactWheelCurvedPicker picker, boolean hasAtmospheric) {
         if (picker != null) {
             picker.setAtmospheric(hasAtmospheric);
         }
     }
 
-    @ReactProp(name="curved")
+    @ReactProp(name = "curved")
     public void setCurved(ReactWheelCurvedPicker picker, boolean hasCurved) {
         if (picker != null) {
             picker.setCurved(hasCurved);
         }
     }
 
-    @ReactProp(name="visibleItemCount")
+    @ReactProp(name = "visibleItemCount")
     public void setVisibleItemCount(ReactWheelCurvedPicker picker, int num) {
         if (picker != null) {
             picker.setVisibleItemCount(num);
         }
     }
 
-    @ReactProp(name="itemSpace")
+    @ReactProp(name = "itemSpace")
     public void setItemSpace(ReactWheelCurvedPicker picker, int space) {
         if (picker != null) {
             picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
         }
     }
 
-    @ReactProp(name="textColor", customType = "Color")
+    @ReactProp(name = "textColor", customType = "Color")
     public void setTextColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
             picker.setItemTextColor(color);
         }
     }
 
-    @ReactProp(name="textSize")
+    @ReactProp(name = "textSize")
     public void setTextSize(ReactWheelCurvedPicker picker, int size) {
         if (picker != null) {
             picker.setItemTextSize((int) PixelUtil.toPixelFromDIP(size));
         }
     }
 
-    @ReactProp(name="selectTextColor", customType = "Color")
+    @ReactProp(name = "selectTextColor", customType = "Color")
     public void setSelectedTextColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
             picker.setSelectedItemTextColor(color);
         }
     }
 
-    //@ReactProp(name="curtain")
-    @ReactProp(name="isShowSelectBackground")
+    // @ReactProp(name="curtain")
+    @ReactProp(name = "isShowSelectBackground")
     public void setCurtain(ReactWheelCurvedPicker picker, boolean hasCurtain) {
         if (picker != null) {
             picker.setCurtain(hasCurtain);
         }
     }
 
-    //@ReactProp(name="curtainColor", customType = "Color")
-    @ReactProp(name="selectBackgroundColor", customType = "Color")
+    // @ReactProp(name="curtainColor", customType = "Color")
+    @ReactProp(name = "selectBackgroundColor", customType = "Color")
     public void setCurtainColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
             picker.setCurtainColor(color);
@@ -155,23 +165,23 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     }
 
     // @ReactProp(name="indicator")
-    @ReactProp(name="isShowSelectLine")
+    @ReactProp(name = "isShowSelectLine")
     public void setIndicator(ReactWheelCurvedPicker picker, boolean hasIndicator) {
         if (picker != null) {
             picker.setIndicator(hasIndicator);
         }
     }
 
-    //@ReactProp(name="indicatorColor", customType = "Color")
-    @ReactProp(name="selectLineColor", customType = "Color")
+    // @ReactProp(name="indicatorColor", customType = "Color")
+    @ReactProp(name = "selectLineColor", customType = "Color")
     public void setIndicatorColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
             picker.setIndicatorColor(color);
         }
     }
 
-    //@ReactProp(name="indicatorSize")
-    @ReactProp(name="selectLineSize")
+    // @ReactProp(name="indicatorSize")
+    @ReactProp(name = "selectLineSize")
     public void setIndicatorSize(ReactWheelCurvedPicker picker, int size) {
         if (picker != null) {
             picker.setIndicatorSize(size);
