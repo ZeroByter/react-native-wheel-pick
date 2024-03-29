@@ -24,7 +24,7 @@ export default class Picker extends Component {
     pickerData: PropTypes.array.isRequired,
     // style: ViewPropTypes.style,
     selectedValue: PropTypes.any,
-    overrideValue: PropTypes.any,
+    overrideSelectedIndex: PropTypes.any,
   };
 
   static defaultProps = {
@@ -35,7 +35,7 @@ export default class Picker extends Component {
     // pickerData: [''], // Require
     style: {},
     selectedValue: '',
-    overrideValue: null
+    overrideSelectedIndex: null
   };
 
   state = {
@@ -78,7 +78,8 @@ export default class Picker extends Component {
       <WheelCurvedPicker
         {...props}
         style={[styles.picker, style]}
-        selectedValue={props.overrideValue || this.state.selectedValue}
+        selectedValue={this.state.selectedValue}
+        overrideSelectedIndex={props.overrideSelectedIndex}
         onValueChange={this.handleChange}
       >
         {pickerData.map((data, index) => (

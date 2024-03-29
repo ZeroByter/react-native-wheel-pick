@@ -63,7 +63,7 @@ class WheelCurvedPicker extends PureComponent {
         {...otherProps}
         onValueChange={this.onValueChange}
         data={this.state.items}
-        selectedIndex={parseInt(this.state.selectedIndex, 10)}
+        selectedIndex={this.props.overrideSelectedIndex ?? parseInt(this.state.selectedIndex, 10)}
       />
     );
   }
